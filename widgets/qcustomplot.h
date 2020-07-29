@@ -89,7 +89,9 @@
 #else
 #  include <QtNumeric>
 #  include <QtWidgets/QWidget>
+#ifdef HAS_PRINTSUPPORT
 #  include <QtPrintSupport/QtPrintSupport>
+#endif
 #endif
 
 class QCPPainter;

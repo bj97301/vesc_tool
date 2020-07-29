@@ -55,7 +55,10 @@ DEFINES += HAS_POS
 
 !android: {
     # Serial port available
-    DEFINES += HAS_SERIALPORT
+    !ios:{
+        DEFINES += HAS_SERIALPORT
+        DEFINES += HAS_PRINTSUPPORT
+    }
 }
 win32: {
     DEFINES += _USE_MATH_DEFINES
@@ -71,10 +74,13 @@ win32: {
 
 QT       += core gui
 QT       += widgets
-QT       += printsupport
 QT       += network
 QT       += quick
 QT       += quickcontrols2
+
+contains(DEFINES, HAS_PRINTSUPPORT) {
+    QT   += printsupport
+}
 
 contains(DEFINES, HAS_SERIALPORT) {
     QT       += serialport
